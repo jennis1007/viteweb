@@ -1,0 +1,72 @@
+// 1. 匯入必要的 Bootstrap 核心
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// ===================================
+// 2. 客製化變數 (覆蓋 Bootstrap 預設值)
+// ===================================
+
+// 客製化主要品牌色：選用一個沉穩的咖啡綠
+$primary: #4e785d; 
+$secondary: #a3725f; // 輔助色，例如咖啡棕
+
+// 字體：建議使用易讀的中文黑體
+$font-family-sans-serif: 'Noto Sans TC', 'Microsoft YaHei', sans-serif;
+
+// 背景色調整
+$body-bg: #f8f9fa; // 淺灰色背景，增加質感
+
+// 重新建立色階表 (讓 Bootstrap 使用新的 $primary)
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark
+);
+
+// ===================================
+// 3. 匯入完整的 Bootstrap 樣式
+// ===================================
+@import "bootstrap/scss/bootstrap";
+
+// ===================================
+// 4. 客製化元件樣式
+// ===================================
+
+// 主視覺區 (Hero)
+.cafe-hero {
+  /* 建議使用一張高品質、安靜氛圍的咖啡店照片 */
+  background-image: url('https://picsum.photos/1600/600?cafe'); 
+  background-color: rgba(0, 0, 0, 0.4); /* 增加遮罩讓文字更清晰 */
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: center;
+  padding: 8rem 0; /* 上下留白 */
+  min-height: 50vh;
+  // 增加陰影讓文字更突出
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+// 菜單卡片 Hover 效果
+.menu-item-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba($primary, 0.15); /* 使用 $primary 產生陰影效果 */
+}
+.menu-img {
+    height: 180px; 
+    object-fit: cover; 
+    width: 100%;
+    border-top-left-radius: calc(0.5rem - 1px); 
+    border-top-right-radius: calc(0.5rem - 1px);
+}
